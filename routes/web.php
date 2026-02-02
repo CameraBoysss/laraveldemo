@@ -12,3 +12,11 @@ Route::get("/posts", function () {
     return view("posts.index", ["posts" => $post]);
 },);
 
+Route::get("/posts/{id}", function (string $id) {
+   $post = DB::selectOne("SELECT * FROM posts WHERE id = ?", [$id]);
+   if ($post == null) {
+       abort(404);
+   }
+   return view("posts.show", ["post" => $post]);
+})->whereNumber('id');
+

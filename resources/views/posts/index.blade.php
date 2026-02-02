@@ -2,7 +2,11 @@
     <h1>Liste des publications</h1>
     <ul>
         @foreach($posts as $post)
-            <li>{{ $post->title }}</li>
+            <li>
+                <a href="/posts/{{ $post->id }}">
+                    {{ $post->title }}
+                </a>
+            </li>
         @endforeach
     </ul>
 </x-layout>
